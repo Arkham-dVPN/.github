@@ -14,6 +14,12 @@ Drawing inspiration from cypherpunk ethos, Arkham uses strong, trustless cryptog
 
 Arkham isn't just a utility; it's a foundational layer for the user-owned internet DAWN envisions. It provides a direct, tangible benefit to every Black Box owner, making the entire network more resilient, private, and valuable with each new participant.
 
+## Arkham & The DAWN Black Box
+
+Arkham is designed to be a core service running inside every DAWN Black Box. By packaging the Go backend into a lightweight, self-contained Linux container, it can be deployed seamlessly to the Black Box hardware.
+
+This project directly answers the call of the DAWN bounty by creating a functional, cypherpunk utility that leverages the distributed nature of the Black Box network. It turns a collection of individual Black Boxes into a powerful, cohesive, and privacy-preserving dVPN for the entire community, adding immense value to every device owner.
+
 ### Built With
 
 <img src="../decentralized virtual private network tools.png" alt="Arkham Tools"/>
