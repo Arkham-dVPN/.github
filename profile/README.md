@@ -16,6 +16,8 @@ Arkham isn't just a utility; it's a foundational layer for the user-owned intern
 
 ### Built With
 
+<img src="../decentralized virtual private network tools.png" alt="Arkham Tools"/>
+
 This project is a monorepo containing two main packages:
 
   * **Backend:**
