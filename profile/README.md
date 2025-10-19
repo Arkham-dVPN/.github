@@ -64,26 +64,37 @@ You must have the following tools installed on your system.
 
 ### Running the Application Locally
 
-To see the full end-to-end application in action, you need to run three processes in separate terminals: two backend nodes and the frontend web server.
+The easiest way to run Arkham locally is with the `ArkhamCLI`. It provides an interactive menu to manage your nodes. You will need at least two nodes running to test the network: one Gateway and one Peer.
 
-1.  **Start the Main Backend Node (Terminal 1)**
-    This node will run the P2P services and the API server on port `8080`. It requires `sudo` to create the WireGuard network interface.
-
-    ```bash
-    cd arkham-backend
-    sudo go run .
-    ```
-
-2.  **Start the Peer-Only Backend Node (Terminal 2)**
-    This node acts as a peer for the main node to connect to. The `-peer-only` flag prevents it from trying to start a conflicting API server.
+1.  **Build the CLI**
+    First, compile the CLI into an executable.
 
     ```bash
-    cd arkham-backend
-    go run . -peer-only
+    cd arkham-cli
+    go build -o arkham
     ```
+    This will create an `arkham` executable in the `arkham-cli` directory.
 
-3.  **Start the Frontend (Terminal 3)**
-    This will start the Next.js development server for the UI on port `3000`.
+2.  **Start the Gateway Node (Terminal 1)**
+    The Gateway Node runs the main P2P services and the API server for the web dashboard. It requires `sudo` to manage network interfaces.
+
+    ```bash
+    cd arkham-cli
+    sudo ./arkham
+    ```
+    From the interactive menu, select **"Start Gateway Node"**.
+
+3.  **Start a Peer Node (Terminal 2)**
+    This node acts as a peer for the Gateway to connect to. Open a new terminal for this process.
+
+    ```bash
+    cd arkham-cli
+    ./arkham
+    ```
+    From the interactive menu, select **"Start Peer-Only Node"**.
+
+4.  **Start the Frontend (Terminal 3)**
+    This will start the Next.js development server for the UI.
 
     ```bash
     cd arkham-vpn
@@ -93,7 +104,7 @@ To see the full end-to-end application in action, you need to run three processe
 
 ### Usage
 
-1.  With all three processes running, open your web browser and navigate to **[http://localhost:3000](https://www.google.com/search?q=http://localhost:3000)**.
+1.  With all three processes running, open your web browser and navigate to **[http://localhost:3000](http://localhost:3000)**.
 2.  Click through to the dashboard.
 3.  The "ACTIVE NODES" card should show `1` or more as peers are discovered.
 4.  Hover over the dots on the map to see peer details in a tooltip.
@@ -102,14 +113,12 @@ To see the full end-to-end application in action, you need to run three processe
 
 -----
 
-## Deployment
+## Author
 
-  * **Frontend:** The `arkham-vpn` directory is a standard Next.js application ready for deployment on **Vercel**. When importing the project to Vercel, ensure you set the **Root Directory** to `arkham-vpn`.
-  * **Backend:** The `arkham-backend` is a self-contained Go application. It can be built into a static binary (`go build`) and deployed in a **Linux container** or on any **VPS**. It must be run with `sudo` or as a user with `CAP_NET_ADMIN` capabilities to manage network interfaces.
-
-> **Note:** For a real deployment, the `fetch` URL in the frontend code must be updated to point to the public IP of the deployed backend server, and the backend's CORS policy should be updated to allow requests only from the frontend's domain.
+Skipp | [GitHub](https://github.com/DavidNzube101) | [X](https://x.com/davidnzubee)
 
 -----
+
 
 ## License
 
